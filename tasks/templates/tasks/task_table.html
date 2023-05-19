@@ -1,0 +1,38 @@
+
+<table class='table is-striped is-hoverable'>
+    <thead>
+        <tr>
+            <th>Id. tarea</th>
+            <th >Título</th>
+            <th>Asignatura</th>
+            <th>Urgente</th>
+            <th>Fecha entrega</th>
+            <th>Prioridad</th>
+        </tr>
+    </thead>
+    <tbody>
+{%for task in tasks%}
+    <tr>
+        <th>{{task.id}}</th>
+        <td>
+            {% if forloop.first %}
+            <b>{{task.title|upper|add:"."}}</b>
+            {% else %}
+                {{task.title}}
+            {% endif %}
+            
+        </td>
+        <td>{{task.subject}}</td>
+        <td>
+            {%if task.urgent%}
+            <b class="urgente">Si</b>
+            {%else%}
+            <i class="no-urgente">No</i>
+            {% endif %}
+        </td>
+        <td>{{task.due_date}}</td>
+        <td>{{task.get_priority_display}}</td>
+    </tr>
+{%endfor%}
+</tbody>
+</table>

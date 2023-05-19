@@ -1,0 +1,25 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+
+<form action="/search/" method="POST">
+{%csrf_token%}
+
+<table class="table">
+    {{ form.as_table }}
+    <tr>
+        <td></td>
+        <td>
+            <button type="submit" value="ok">Buscar</button>
+        </td>
+    </tr>
+
+</table>
+
+</form>
+
+{% if tasks %}
+    {% include 'tasks/task_table.html' %}
+{% endif %}
+{% endblock content %}
+

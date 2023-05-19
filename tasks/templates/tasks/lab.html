@@ -1,0 +1,111 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+
+{% block content  %}
+<hr>
+<form action="'">
+    
+    <p>input type=text
+    <input type="text" name="username" >
+    </p>
+    <p>input type=password
+    <input type="password" name="password" >
+    </p>
+    <p>input type=checkbox
+    <input type="checkbox" name="checkbox" >
+    </p>
+    <p>input type=radio
+    <input type="radio" name="radio" >
+    </p>
+    <p>input type=file
+    <input type="file" name="file" >
+    </p>
+    <p>input type=hidden
+    <input type="hidden" name="secreto" value="xxx" >
+    </p>
+    <p>input type=image
+    <input  type="image" name="img" src="{%static 'tasks/login-button.png'%}">
+    </p>
+    <p>input type=submit
+    <input  type="submit" name="GO" >
+    </p>
+    <h5>Html 5 </h5>
+    
+    <p>input type=color
+        <input  type="color" name="color" >
+    </p>
+    
+    <p>input type=date
+        <input  type="date" name="date" >
+    </p>
+    
+    <p>input type=date-local
+        <input  type="datetime-local" name="datetime" >
+    </p>
+    
+    <p>input type=email
+        <input  type="email" name="email" >
+    </p>
+    
+    <p>input type=url
+        <input  type="url" name="url" >
+    </p>
+    
+    <p>input type=tel
+        <input required type="tel" pattern="\d\d\d \d\d\d\d\" name="telefono" >
+    </p>
+    
+    <p>input type=month
+        <input  type="month" name="mes" >
+    </p>
+    
+    <p>input type=number
+        <input  type="number" name="numero" >
+    </p>
+    
+    <p>input type=range
+        <input require type="range" step="10"min="0"
+            id="slider" max="100" name="porcentaje" >
+        <p> Value: <output id="value"></output></p>
+    </p>
+    
+    <p>input type=search
+        <input  type="search" name="query" >
+    </p>
+    
+    <h2 class= "is-size-2">TextArea</h2>
+    <fieldset disabled>
+        <legend>Descripcion del subformulario</legend>
+    <textarea name="texto" cols="80" rows="7" maxlength="10" maxlength="24"> 
+    Escribe tu problema
+    </textarea>
+    <p>
+        <label for="cb-ninja">Seleccion tu tortuga ninja / artista famoso del renacimiento italiano:
+            <select name="ninja" id="cb-ninja">
+                <option value="leo">Leonardo</option>
+                <option value="mike">Michelangelo</option>
+                <option value="don">Donatello</option>
+                <option value="ralph">Raphael</option>
+            </select>
+        </label>
+    </p>
+</fieldset>
+
+</form>
+
+{% endblock content %}
+
+
+{% block javascript %}
+<script>
+    console.log("funciona!");
+    const value = document.querySelector("#value");
+    const input = document.querySelector("#slider");
+
+    value.textContent= input.value;
+    input.addEventListener("input", (event)=> {
+        value.textContent=event.target.value;
+        });
+</script>
+
+{% endblock javascript %}

@@ -1,0 +1,114 @@
+
+<html>
+    
+    <head>
+        <title> 
+            TasksMaster homepage
+        </title>
+        
+        <link rel="stylesheet" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" 
+              integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" 
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="/static/tasks/bulma.css">
+        <link rel="stylesheet" href="/static/tasks/custom.css">
+        
+    </head>
+
+    <body>
+
+        
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/static/tasks/img/logo-64x64.png" width="32" height="32">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+  
+        <a class="navbar-item" href="/tareas/">
+          Tareas
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Prioridades
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/tareas/h/">
+              Alta
+            </a>
+            <a class="navbar-item" href="/tareas/n/">
+              Normal
+            </a>
+            <a class="navbar-item" href="/tareas/l/">
+              Baja
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href='/tareas/alta/'>
+              Nueva tarea
+            </a>
+          </div>
+        </div>
+    </div>
+  
+      <div class="navbar-end">
+        
+        <div class="navbar-item">
+            <form method="GET" action="/search/">
+                <input type="hidden" name="csrfmiddlewaretoken" value="7zVOO5xbhuuIdKNtwp84JblWhVhdR0qre99oLJpuPCxIky7vVAoxeBvfUxIUe0aB">
+
+                <div class="field has-addons">
+                
+                    <div class="control">
+                    <input  type="search" class="input"
+                            placeholder="Texto a buscar"
+                            name="query" 
+                            value="">
+                    </div>
+                
+                    <div class="control">
+                        <button type="submit" class="input" name="ok" value="buscar">
+                            <i class= "fas fa-search"></i>
+                          </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+            
+            <div class="buttons">
+                <a class="button is-primary" href="/admin/">
+              <strong>Admin</strong>
+                </a>
+            </div>
+      </div>
+</nav>
+
+        <h1 class="title">TasksMaster</h1>
+        <h2 class="subtitle">TasksMaster homepage</h2>
+        
+        
+
+        
+<h3>Bienvenidos a TaskMaster</h3>
+
+
+        <p id="trademark">CopyRight TasksMaster 2023</p>
+
+        
+        
+        
+    </body>
+
+</html>
