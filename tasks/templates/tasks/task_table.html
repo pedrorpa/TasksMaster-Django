@@ -13,7 +13,11 @@
     <tbody>
 {%for task in tasks%}
     <tr>
-        <th>{{task.id}}</th>
+        <th>
+            <a href= "{% url 'edit_task' pk=task.pk %}" role = "button" class="button is-primary">
+            {{task.id}}
+            </a>
+        </th>
         <td>
             {% if forloop.first %}
             <b>{{task.title|upper|add:"."}}</b>

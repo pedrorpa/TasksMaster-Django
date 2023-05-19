@@ -1,15 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from tasks import forms
 from tasks.models import Subject, Task
 
 
 # Create your views here.
 def homepage(request):
+    tasks = Task.objects.all().order_by("-created")[0:6]
     return render(
         request,
         "tasks/homepage.html",
         {
             "title": "TasksMaster homepage",
+            "tasks": tasks,
         },
     )
 
@@ -151,8 +153,33 @@ def lab_view(request):
     return render(request, "tasks/lab.html", {"title": "Labs page"})
 
 
+def edit_task(request, pk):
+    task = Task.objects.get(pk=pk)
+    if request.method == "POST":
+        form = forms.EditTaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    else:
+        form = forms.EditTaskForm(instance=task)
+    return render(
+        request,
+        "tasks/edit_task.html",
+        {
+            "title": f"Editar tarea #{task.pk}",
+            "form": form,
+        },
+    )
+
+
 def create_task(request):
-    form = forms.CreateTaskForm()
+    if request.method == "POST":
+        form = forms.CreateTaskForm(request.POST)
+        if form.is_valid():
+            new_task = form.save()
+            return redirect("/")
+    else:
+        form = forms.CreateTaskForm()
     return render(
         request,
         "tasks/create_task.html",
