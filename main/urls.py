@@ -17,11 +17,13 @@ Including another URLconf
 import re
 
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import include, path, re_path
 from tasks import views
+from tasks.views import TaskCreateAPIView
 
 urlpatterns = [
     path("", views.homepage),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("lab/", views.lab_view),
     path("tareas/", views.list_tasks),
     path("tareas/calendar/<int:year>/", views.list_tasks_per_year),
@@ -36,4 +38,8 @@ urlpatterns = [
     path("temas/<int:pk>/", views.subject_detail),
     path("search/", views.search),
     path("admin/", admin.site.urls),
+    # API GET/POST
+    path("api/tasks/", views.get_tasks_API),
+    path("api/tasks/create/", TaskCreateAPIView.as_view()),
+    path("api/tasks/<int:id>/", views.get_tasks_API),
 ]
